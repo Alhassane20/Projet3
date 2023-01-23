@@ -186,3 +186,77 @@ footer nav ul {
 	margin: 2em
 }
 
+
+#filtres
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 10px;
+}
+.filtre
+{
+	border: 1px;
+	border-style: solid;
+	border-radius: 60px;
+	border-color: #1D6154;
+	height: 37px;
+	margin-bottom: 51px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: auto;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+.tous
+{
+	border: 1px;
+	border-style: solid;
+	border-radius: 60px;
+	border-color: #1D6154;
+	height: 37px;
+	margin-bottom: 51px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: auto;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.filtre:hover
+{
+	background-color: #1D6154;
+}
+.tous:hover
+{
+	background-color: #1D6154;
+}
+.filtre p:hover
+{
+	color: white;
+}
+.tous p:hover
+{
+	color: white;
+}
+.filtre p
+{
+	color: #1D6154;
+	text-align: center;
+	font-weight: 700;
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.tous p
+{
+	color: #1D6154;
+	text-align: center;
+	font-weight: 700;
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+}
