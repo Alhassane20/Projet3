@@ -10,8 +10,17 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/javascript/script.js" defer crossorigin="anonymous"></script> 
+	<script src="https://kit.fontawesome.com/01d2794f34.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	
+	<div id="rectangle"> 												<!--*** -->
+		<button type="submit">
+			<i class="fa-thin fa-pen-to-square"></i> 
+			<p>Mode édition</p>
+		</button>
+		<input type="submit" value="publier les changements">
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
@@ -24,27 +33,13 @@
 	</nav>
 </header>
 <main>
-	<login>
-		<h1>Log In</h1>
-
-		<div id="seconnecter">
-		<p>E-mail</p>
-		<input type="text" id="user">
-		</div>
-		<div id="mdp">
-		<p>Mot de passe</p>
-		<input type="password" id="password">
-		</div>
-
-		<div id="zoneclique">
-		<input type="button" value="Se connecter" onclick="Connection()">
-		<a href="">Mot de passe oublié</a>
-		</div>
-
-	</login>
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<button type="submit">													<!--*** -->
+				<i class="fa-thin fa-pen-to-square"></i> 
+				<p>Modifier</p>
+			</button>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -54,7 +49,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div id="projet">
+		<h2>Mes Projets </h2>
+		<button type="submit">										<!--*** -->
+			<i class="fa-thin fa-pen-to-square"></i> 
+			<p>Modifier</p>
+		</button>
+	</div>
 		<div id="filtres">
 			<div class="tous" onclick ="filterByCategory(-1)"><p>Tous</p></div>
 			</div>

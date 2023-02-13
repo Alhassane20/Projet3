@@ -75,10 +75,32 @@ async function Connection() {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-        "email": "string",
-        "password": "string",
+        "email": user,
+        "password": password,
     })
+    // Remplir le formulaire
+    // Envoyer le formulaire
     }).then((response) => response.json())
-    .then(data =>
-        console.log(data));
+    .then(data => {
+        if (data.userId == null) {
+            let message = data.message
+            document.body.append(message)
+            console.log(message);
+            // Si connexion échouée
+            // Recois aucun token 
+            // Recois un message d'erreur
+        } else {
+            Redirection()
+            // Si connexion reussie
+            // Recevoir le token
+            // Stocker le token
+            // Rediriger vers la page d'accueil
+        }
+
+        console.log(data)
+    })
+}
+
+function Redirection() {
+        
 }

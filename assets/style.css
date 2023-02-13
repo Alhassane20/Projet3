@@ -82,7 +82,7 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 nav ul {
 	display: flex;
@@ -335,4 +335,65 @@ login p
 	font-weight: 500;
 	color: #3D3D3D;
 	font-size: 14px;
+}
+
+#rectangle
+{
+	background-color: black;
+	display: flex;
+	flex-direction: row;
+	height: 59px;
+}
+#rectangle button
+{
+	border: none;
+	background-color: black;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	margin-left: 36%;
+	margin-top: 20px;
+	column-gap: 12px;
+}
+#rectangle input
+{
+	background-color: white;
+	color: black;
+	width: 216px;
+	height: 38px;
+	border-radius: 60px;
+	margin-top: 10px;
+	margin-right: 34%;
+}
+figure button
+{
+	border: none;
+	background-color: white;
+	color: black;
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	column-gap: 12px;
+	margin-left: 53px;
+	margin-top: 15px;
+}
+
+#portfolio button
+{
+	border: none;
+	background-color: white;
+	color: black;
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	column-gap: 12px;
+	margin-top: 10px;
+}
+
+#projet
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 31px;
 }
