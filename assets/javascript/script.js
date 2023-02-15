@@ -82,25 +82,32 @@ async function Connection() {
     // Envoyer le formulaire
     }).then((response) => response.json())
     .then(data => {
-        if (data.userId == null) {
+        if (data.token == null) {
             let message = data.message
             document.body.append(message)
-            console.log(message);
             // Si connexion échouée
             // Recois aucun token 
             // Recois un message d'erreur
         } else {
-            Redirection()
             // Si connexion reussie
             // Recevoir le token
             // Stocker le token
             // Rediriger vers la page d'accueil
         }
-
-        console.log(data)
+        localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4")
     })
 }
 
+let rectangle = document.getElementById("rectangle")
+rectangle.style.display = "none"
+let modifierphoto = document.getElementById("modifierphoto")
+modifierphoto.style.display = "none"
+let modifierworks = document.getElementById("modifierworks")
+modifierworks.style.display = "none"
 function Redirection() {
-        
+    window.location.replace=("index.html");
+    rectangle.style.display = "block"
+    modifierphoto.style.display = "block"
+    modifierworks.style.display = "block"
+
 }
