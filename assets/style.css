@@ -340,20 +340,25 @@ login p
 #rectangle
 {
 	background-color: black;
-	display: flex;
-	flex-direction: row;
+	display: none;
 	height: 59px;
 }
-#rectangle button
+
+#boutonrectangle
+{
+	display: flex;
+	flex-direction: row;
+}
+#rectangle a
 {
 	border: none;
 	background-color: black;
 	color: white;
-	display: flex;
 	flex-direction: row;
 	margin-left: 36%;
 	margin-top: 20px;
 	column-gap: 12px;
+	text-decoration: none;
 }
 #rectangle input
 {
@@ -365,29 +370,27 @@ login p
 	margin-top: 10px;
 	margin-right: 34%;
 }
-figure button
+#boutonmodal
 {
-	border: none;
-	background-color: white;
 	color: black;
-	display: flex;
-	flex-direction: row;
+	display: none;
 	font-size: 14px;
 	column-gap: 12px;
 	margin-left: 53px;
 	margin-top: 15px;
+	text-decoration: none;
 }
 
-#portfolio button
+#modifierworks
 {
 	border: none;
 	background-color: white;
 	color: black;
-	display: flex;
-	flex-direction: row;
+	display: none;
 	font-size: 14px;
 	column-gap: 12px;
 	margin-top: 10px;
+	text-decoration: none;
 }
 
 #projet
@@ -396,4 +399,231 @@ figure button
 	flex-direction: row;
 	justify-content: center;
 	column-gap: 31px;
+}
+
+.modalContener{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: inline-flex;
+	display: none;
+}
+#modale1
+{
+	position: relative;
+	margin: auto;
+	background-color: #FFFFFF;
+	width: 630px;
+	border-radius: 10px;
+}
+
+.closeModale
+{
+	border: none;
+	background-color: white;
+	margin-left: 92%;
+	margin-top: 32px;
+}
+
+
+aside h3
+{
+	font-weight: 400;
+	text-align: center;
+	font-size: 26px;
+}
+#images
+{
+	display: grid;
+	grid-template-columns: 78px 78px 78px 78px 78px;
+	row-gap: 26px;
+	column-gap: 7px;
+	justify-content: center;
+	margin-top: 46px;
+}
+
+
+#images .imge
+{
+	width: 78px;
+	height: 104px;
+	margin: 0;
+	position: relative;
+}
+
+.imge img {
+	height: 104px;
+	width: 78px;
+}
+
+.imge i {
+	position: absolute;
+	top: 6px;
+	left: 52px;
+}
+.imge .icones
+{
+	display: flex;
+	flex-direction: row;
+}
+
+.imge .arrow
+{
+	left: 25px;
+}
+.imge .poubelle
+{
+	left: 52px;
+}
+#images i
+{
+	border-style: solid;
+	background-color: black;
+	border-color: black;
+	color: white;
+	border-width: 4px;
+}
+
+.trait
+{
+	color: #B3B3B3;
+	border: 1px;
+	border-style: solid;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 47px;
+}
+
+#modale1 #dialogbox
+{
+	width: 100%;
+}
+
+#btns
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 48px;
+	row-gap: 23px;
+}
+#modale1 #ajtphoto
+{
+	background-color: #1D6154;
+	border: none;
+	width: 237px;
+	height: 36px;
+	color: white;
+	border-radius: 60px;
+}
+
+#modale1 #suppgallerie
+{
+	color: #D65353;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+#modale2
+{
+	display: none;
+	position: relative;
+	margin: auto;
+	background-color: #FFFFFF;
+	width: 630px;
+	border-radius: 10px;
+	padding-bottom: 55px;
+}
+#headerModal
+{
+	display: flex;
+	flex-direction: row;
+}
+#headerModal .closeModale
+{
+	margin-left: 85%;
+}
+#return
+{
+	border: none;
+	width: 21px;
+	background-color: white;
+	margin-left: 30px;
+	margin-top: 30px;
+
+}
+#cadrePhoto
+{
+	background-color: #E8F1F6;
+	text-align: center;
+	margin-top: 36px;
+	height: 169px;
+	width: 420px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+#cadrePhoto i
+{
+	color: #B9C5CC;
+	height: 46px;
+	margin-top: 28px;
+}
+#cadrePhoto p
+{
+	font-weight: 400;
+	font-size: 10px;
+	margin-top: 7px;
+}
+#addPhotos
+{
+	width: 173px;
+	height: 36px;
+	color: #306685;
+	background-color: #CBD6DC;
+	border-radius: 50px;
+	border: none;
+	margin-top: 21px;
+}
+
+#zoneTexte
+{ 
+	margin-top: 9px;
+	display: flex;
+	flex-direction: column;
+	width: 420px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#zoneTexte input,select
+{
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 51px;
+	background-color: white;
+	margin-top: 10px;
+}
+#zoneTexte h4
+{
+	margin-top: 21px;
+}
+#valider
+{
+	margin-top: 42px;
+	display: flex;
+	justify-content: center;
+}
+#valider button
+{
+	background-color: #A7A7A7;
+	color: white;
+	width: 237px;
+	height: 36px;
+	border-radius: 60px;
+	border: none;
 }

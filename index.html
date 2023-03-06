@@ -1,89 +1,149 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="./assets/javascript/script.js" defer crossorigin="anonymous"></script> 
+	<script src="./assets/javascript/script.js" defer crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/01d2794f34.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-	
-	<div id="rectangle"> 												<!--*** -->
-		<button type="submit">
-			<i class="fa fa-pen-to-square"></i> 
+
+	<div id="rectangle"> <!--*** -->
+		<a id="boutonrectangle" onclick="ouvrirModale()">
+			<i class="fa fa-pen-to-square"></i>
 			<p>Mode édition</p>
-		</button>
+		</a>
 		<input type="submit" value="publier les changements">
 	</div>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-			<button type="submit" id="modifierphoto" >													<!--*** -->
-				<i class="fa fa-pen-to-square"></i> 
-				<p>Modifier</p>
-			</button>
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<div id="projet">
-		<h2>Mes Projets </h2>
-		<button type="submit" id="modifierworks">										<!--*** -->
-			<i class="fa fa-pen-to-square"></i> 
-			<p>Modifier</p>
-		</button>
-	</div>
-		<div id="filtres">
-			<div class="tous" onclick ="filterByCategory(-1)"><p>Tous</p></div>
+	<header>
+		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<li>login</li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+				<a id="boutonmodal" onclick="ouvrirModale()"> <!--*** -->
+					<i class="fa fa-pen-to-square"></i>
+					<p>Modifier</p>
+				</a>
+			</figure>
+			<article>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+					décorateur(trice)</p>
+			</article>
+		</section>
+
+		<aside class="modalContener" id="modaleContener">
+
+			<div id="modale1" aria-labelledby="dialog-title" aria-modal="true" aria-hidden="true">
+				<div role="document" id="dialogbox" class="c-dialog__box">
+					<button type="submit" class="closeModale" onclick="fermerModale()">X</button>
+					<h3>Galerie photo</h3>
+					<div id="images">
+					</div>
+					<div class="trait"></div>
+					<div id="btns">
+						<button type="submit" id="ajtphoto" onclick="changerModale()">Ajouter une photo</button>
+						<a id="suppgallerie" onclick="deleteWorks()">Supprimer la galerie</a>
+					</div>
+				</div>
 			</div>
-		<div class="gallery">
 
-		</div>
-	</section>
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
+			<div id="modale2" 
+			aria-labelledby="dialog-title" aria-modal="true" aria-hidden="true">
+				<div role="document" id="dialogbox" class="c-dialog__box">
+					<div id="headerModal">
+						<button type="submit" id="return" onclick="returnModal()"><i
+								class="fa fa-arrow-left"></i></button>
+						<button type="submit" class="closeModale" onclick="fermerModale()">X</button>
+					</div>
+					<h3>Ajout photo</h3>
 
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
+					<div id="cadrePhoto">
+						<i class="fa fa-image fa-4x"></i>
+						<input type="file" name="image" accept="images" id="addPhotos" onclick="">+ Ajouter photo
+						<p>jpg.png : 4mo max</p>
+					</div>
+
+					<div id="zoneTexte">
+						<h4>Titre</h4>
+						<input type="text" name="title" id="titre">
+						<h4>Catégorie</h4>
+						<select id="categorie" name="category">
+						</select>
+					</div>
+
+					<div class="trait"></div>
+					<div id="valider">
+						<button type="submit" onclick="addWorks()">Valider</button>
+					</div>
+				</div>
+			</div>
+
+		</aside>
+
+		<section id="portfolio">
+			<div id="projet">
+				<h2>Mes Projets </h2>
+				<a id="modifierworks" onclick="ouvrirModale()"> <!--*** -->
+					<i class="fa fa-pen-to-square"></i>
+					<p>Modifier</p>
+				</a>
+			</div>
+			<div id="filtres">
+				<div class="tous" onclick="filterByCategory(-1)">
+					<p>Tous</p>
+				</div>
+			</div>
+			<div class="gallery">
+
+			</div>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
+
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
 </body>
+
 </html>
