@@ -221,10 +221,14 @@ function returnModal() {
 }
 
 function addWorks(e) {
-    let image = document.getElementById("addPhotos")
+    let image = document.getElementById("addPhotos").value
     let titre = document.getElementById("titre").value;
     let categorie = document.getElementById("categorie").value;
-    let form = document.getElementById("modale2")
+    let newForm = new FormData()
+    newForm.append("image",image)
+    newForm.append("title",titre)
+    newForm.append("category",categorie)
+    console.log(newForm);
     fetch("http://localhost:5678/api/works", {
         method: 'POST',
         headers: {
@@ -232,12 +236,7 @@ function addWorks(e) {
             'Content-Type': 'multipart/form-data',
             "Authorization": `Bearer ${getToken()}`,
         },
-        body: new FormData(document.getElementById('modale2'))
-        // body: JSON.stringify({
-        //     "image": image,
-        //     "title": titre,
-        //     "category": categorie,
-        // })
+        body: newForm,
     }).then((response) => response.json())
         .then(data => {
             console.log(data);
@@ -251,7 +250,8 @@ function addWorks(e) {
             if (categorie =! "string") {
         document.body.append(erreur)
     }
-})}
+})
+}
 
 function categoriesModale() {
     fetch("http://localhost:5678/api/categories")
