@@ -1,23 +1,41 @@
+function redirectLogin() {
+    window.location.href ="login.html"
+}
 
-fetch("http://localhost:5678/api/works")
+worksPage()
+function worksPage() {
+    fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
     .then(data => {
         fetchCategories(data)
     })
 
+}
+
+function majWorksPage() {
+    document.getElementById("main-gallery").innerHTML = "";
+    fetch("http://localhost:5678/api/works")
+    .then((response) => response.json())
+    .then(data => {
+        for (let i = 0; i < data.length; ++i) {
+            workFactory(data[i]);
+        }
+    })
+}
+
 
 async function fetchCategories(works) {
+
     fetch("http://localhost:5678/api/categories")
         .then((reponse) => reponse.json())
         .then(categories => {
             var filtres = document.getElementById("filtres");
             categories.forEach(cat => {
                 filterFactory(cat);
-                works.forEach(b => {
-                    workFactory(b);
-                });
             });
-
+            works.forEach(b => {
+                workFactory(b);
+            })
         });
 
 }
@@ -118,9 +136,15 @@ if (getToken() != null) {
     boutonmodal.style.display = "flex"
     let modifierworks = document.getElementById("modifierworks")
     modifierworks.style.display = "flex"
+    let login = document.getElementById("login")
+    login.style.display ="none"
     // Ajouter "token" dans une variable
     //  Si localStorage contient token
     //  Affiche les boutons
+}
+
+function logoutDirection() {
+    window.location.href ="login.html"
 }
 
 function fermerModale() {
@@ -142,6 +166,7 @@ document.addEventListener("click", (e) => {
 })
 
 function worksModale() {
+    document.getElementById("images").innerHTML = "";
     fetch("http://localhost:5678/api/works")
         .then((response) => response.json())
         .then(data => {
@@ -151,6 +176,7 @@ function worksModale() {
         })
 }
 
+let firstImage = true;
 function workModalFactory(work) {
     let images = document.getElementById("images")
 
@@ -166,7 +192,7 @@ function workModalFactory(work) {
 
     let poubelle = document.createElement("i")
     poubelle.setAttribute("class", "fa-sharp fa-solid fa-trash-can poubelle")
-    poubelle.setAttribute("click", deleteOneWork(id))
+    poubelle.setAttribute("onclick", "deleteOneWork(" + work.id + ")")
 
     let editer = document.createElement("figcaption")
     editer.append("éditer")
@@ -187,11 +213,9 @@ function deleteWorks() {
         .then(data => {
             for (i = 0; i < data.length; i++) {
                 let id = data[i].id
-                deleteOneWork(id)
+                deleteOneWork(id);
             }
         })
-
-    window.location.reload()
 }
 
 function deleteOneWork(id) {
@@ -201,9 +225,10 @@ function deleteOneWork(id) {
         headers: {
             "Authorization": `Bearer ${getToken()}`
         }
-    }).then((response) => response.json())
-        .then((data) => {
-        })
+    }).then((response) => {
+        worksModale();
+        majWorksPage()
+    })
 }
 
 function changerModale() {
@@ -220,8 +245,12 @@ function returnModal() {
     modale2.style.display = "none"
 }
 
-function addWorks(e) {
-    let image = document.getElementById("addPhotos").value
+/**
+ * Fonction aj
+ * @param {*} e 
+ */
+function addWorks(e) { 
+    let image = document.getElementById("addPhotos").files[0];
     let titre = document.getElementById("titre").value;
     let categorie = document.getElementById("categorie").value;
     let newForm = new FormData()
@@ -232,26 +261,40 @@ function addWorks(e) {
     fetch("http://localhost:5678/api/works", {
         method: 'POST',
         headers: {
-            'accept': 'application/json',
-            'Content-Type': 'multipart/form-data',
             "Authorization": `Bearer ${getToken()}`,
         },
         body: newForm,
     }).then((response) => response.json())
         .then(data => {
-            console.log(data);
-            let erreur = data.error
-            if (image =! "file") {
-        document.body.append(erreur)
-    }
-            if (titre =! "string") {
-        document.body.append(erreur)
-    }
-            if (categorie =! "string") {
-        document.body.append(erreur)
-    }
-})
+            worksModale()
+            majWorksPage()
+        })
 }
+
+function previewImage() {
+    var preview = document.querySelector('#imagePreview');
+    var file = document.querySelector('#addPhotos').files[0];
+    addphotos = document.getElementById("addphotostwo")
+    var reader = new FileReader();
+  
+    reader.addEventListener("load", function () {
+      preview.src = reader.result;
+    }, false);
+  
+    if (file) {
+      reader.readAsDataURL(file);
+      addphotos.style.display = "none"
+    }
+  }
+
+  function selectOther() {
+    const imagePreview = document.getElementById("imagePreview");
+    imagePreview.addEventListener('click', function() {
+    const inputElement = document.getElementById("addPhotos");
+    inputElement.click();
+    });
+  }
+selectOther()
 
 function categoriesModale() {
     fetch("http://localhost:5678/api/categories")

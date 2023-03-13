@@ -93,6 +93,7 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	cursor: pointer;
 }
 
 li:hover {
@@ -131,6 +132,11 @@ li:hover {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+}
+
+#log
+{
+	font-weight: 600;
 }
 
 .gallery img {
@@ -348,6 +354,7 @@ login p
 {
 	display: flex;
 	flex-direction: row;
+	cursor: pointer;
 }
 #rectangle a
 {
@@ -369,6 +376,7 @@ login p
 	border-radius: 60px;
 	margin-top: 10px;
 	margin-right: 34%;
+	cursor: pointer;
 }
 #boutonmodal
 {
@@ -379,6 +387,7 @@ login p
 	margin-left: 53px;
 	margin-top: 15px;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #modifierworks
@@ -391,6 +400,7 @@ login p
 	column-gap: 12px;
 	margin-top: 10px;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #projet
@@ -426,6 +436,7 @@ login p
 	background-color: white;
 	margin-left: 92%;
 	margin-top: 32px;
+	cursor: pointer;
 }
 
 
@@ -509,6 +520,7 @@ aside h3
 	align-items: center;
 	margin-top: 48px;
 	row-gap: 23px;
+	cursor: pointer;
 }
 #modale1 #ajtphoto
 {
@@ -518,6 +530,7 @@ aside h3
 	height: 36px;
 	color: white;
 	border-radius: 60px;
+	cursor: pointer;
 }
 
 #modale1 #suppgallerie
@@ -525,6 +538,8 @@ aside h3
 	color: #D65353;
 	font-size: 14px;
 	text-decoration: none;
+	margin-bottom: 48px;
+	cursor: pointer;
 }
 
 #modale2
@@ -545,6 +560,7 @@ aside h3
 #headerModal .closeModale
 {
 	margin-left: 85%;
+	cursor: pointer;
 }
 #return
 {
@@ -553,6 +569,7 @@ aside h3
 	background-color: white;
 	margin-left: 30px;
 	margin-top: 30px;
+	cursor: pointer;
 
 }
 #cadrePhoto
@@ -567,6 +584,7 @@ aside h3
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
+	position: relative;
 }
 #cadrePhoto i
 {
@@ -574,14 +592,23 @@ aside h3
 	height: 46px;
 	margin-top: 28px;
 }
-#cadrePhoto p
+#cadrePhoto h4
 {
 	font-weight: 400;
 	font-size: 10px;
 	margin-top: 7px;
 }
-#addPhotos
-{
+
+#addPhotos {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+    z-index: -1;
+	cursor: pointer;
+}
+
+.custom-file-upload {
 	width: 173px;
 	height: 36px;
 	color: #306685;
@@ -589,6 +616,20 @@ aside h3
 	border-radius: 50px;
 	border: none;
 	margin-top: 21px;
+	cursor: pointer;
+}
+
+.custom-file-upload p
+{
+	font-size: 14px;
+	font-weight: 500;
+	margin-top: 10px;
+	cursor: pointer;
+}
+#imagePreview
+{
+	height: 169px;
+	position: absolute;
 }
 
 #zoneTexte
@@ -626,4 +667,5 @@ aside h3
 	height: 36px;
 	border-radius: 60px;
 	border: none;
+	cursor: pointer;
 }

@@ -18,7 +18,7 @@
 <body>
 
 	<div id="rectangle"> <!--*** -->
-		<a id="boutonrectangle" onclick="ouvrirModale()">
+		<a id="boutonrectangle">
 			<i class="fa fa-pen-to-square"></i>
 			<p>Mode édition</p>
 		</a>
@@ -30,7 +30,8 @@
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li>login</li>
+				<li id="login" onclick="redirectLogin()">login</li>
+				<li onclick="logoutDirection()">logout</li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -39,7 +40,7 @@
 		<section id="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
-				<a id="boutonmodal" onclick="ouvrirModale()"> <!--*** -->
+				<a id="boutonmodal"> <!--*** -->
 					<i class="fa fa-pen-to-square"></i>
 					<p>Modifier</p>
 				</a>
@@ -63,6 +64,8 @@
 					<button type="submit" class="closeModale" onclick="fermerModale()">X</button>
 					<h3>Galerie photo</h3>
 					<div id="images">
+
+
 					</div>
 					<div class="trait"></div>
 					<div id="btns">
@@ -84,8 +87,10 @@
 
 					<div id="cadrePhoto">
 						<i class="fa fa-image fa-4x"></i>
-						<input type="file" name="image" accept="images" id="addPhotos" onclick="">+ Ajouter photo
-						<p>jpg.png : 4mo max</p>
+						<img id="imagePreview" src="#" alt=""/>
+						<label for="addPhotos" id="addphotostwo" class="custom-file-upload"><p>+ Ajouter photo</p></label>
+						<input type="file" name="image" accept="images" id="addPhotos" onchange="previewImage();">
+						<h4>jpg.png : 4mo max</h4>
 					</div>
 
 					<div id="zoneTexte">
@@ -118,7 +123,7 @@
 					<p>Tous</p>
 				</div>
 			</div>
-			<div class="gallery">
+			<div id="main-gallery" class="gallery">
 
 			</div>
 		</section>
