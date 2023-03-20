@@ -1,8 +1,30 @@
-function redirectLogin() {
-    window.location.href ="login.html"
-}
 
-worksPage()
+function redirectLogin() {
+    let login = document.getElementById("login")
+    login.addEventListener("click",() => {
+    window.location.href ="login.html"
+})
+}
+redirectLogin()
+
+function logoutDirection() {
+    let logout = document.getElementById("logout")
+    logout.addEventListener("click",() => {
+        window.location.href ="login.html"
+    })
+}
+logoutDirection()
+function indexDirection() {
+    let logo = document.getElementById("logo")
+    logo.addEventListener("click",() => {
+        window.location.href = "index.html"
+    })
+}
+indexDirection()
+
+/**
+ * Appel de l'api pour importer les travaux de l'architecte
+ */
 function worksPage() {
     fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
@@ -12,6 +34,9 @@ function worksPage() {
 
 }
 
+/**
+ * Vide le formulaire et réaffiche les travaux
+ */
 function majWorksPage() {
     document.getElementById("main-gallery").innerHTML = "";
     fetch("http://localhost:5678/api/works")
@@ -23,7 +48,9 @@ function majWorksPage() {
     })
 }
 
-
+/**
+ * Appel de l'api pour importer les categories
+ */
 async function fetchCategories(works) {
 
     fetch("http://localhost:5678/api/categories")
@@ -40,6 +67,9 @@ async function fetchCategories(works) {
 
 }
 
+/**
+ * Filtre les travaux par categories
+ */
 function filterByCategory(categoryId) {
     // filtrer les les travaux par categories
     let figures = document.getElementsByClassName("figure-work");
@@ -55,6 +85,9 @@ function filterByCategory(categoryId) {
     }
 }
 
+/**
+ * Crée dynamiquement les filtres
+ */
 function filterFactory(category) {
     // creer les filtres dynamiquement
     div = document.createElement("div")
@@ -66,8 +99,10 @@ function filterFactory(category) {
     filtres.appendChild(div)
 }
 
+/**
+ * Crée dynamiquement les travaux 
+ */
 function workFactory(work) {
-    // créer les travaux dynamiquement
     var title = work.title;
     var url = work.imageUrl;
 
@@ -86,8 +121,10 @@ function workFactory(work) {
 
 }
 
+/**
+ * Authentification
+ */
 async function Connection() {
-    // authentification
     let user = document.getElementById("user").value;
     let password = document.getElementById("password").value;
 
@@ -121,15 +158,19 @@ async function Connection() {
 }
 
 
-
+/**
+ * Stock le token
+ */
 function getToken() {
     const urlParams = new URLSearchParams(window.location.search);
     let token = urlParams.get('token')
     return token;
 }
 
+/**
+ * Modifications pour page connecté
+ */
 if (getToken() != null) {
-    // Modifications pour page connecté
     let rectangle = document.getElementById("rectangle")
     rectangle.style.display = "flex"
     let boutonmodal = document.getElementById("boutonmodal")
@@ -138,18 +179,20 @@ if (getToken() != null) {
     modifierworks.style.display = "flex"
     let login = document.getElementById("login")
     login.style.display ="none"
+    let logout = document.getElementById("logout")
+    logout.style.display = "block"
     // Ajouter "token" dans une variable
     //  Si localStorage contient token
     //  Affiche les boutons
 }
 
-function logoutDirection() {
-    window.location.href ="login.html"
-}
-
+fermerModale()
 function fermerModale() {
+    let closeModale = document.getElementsByClassName("closeModale")
     let modaleContener = document.querySelector(".modalContener")
-    modaleContener.style.display = "none";
+    closeModale.addEventListener("click", () => {
+        modaleContener.style.display = "none";
+    })
 }
 
 function ouvrirModale() {
@@ -159,25 +202,33 @@ function ouvrirModale() {
     worksModale();
 }
 
+/**
+ * Fermer la modale en cliquant à l'exterieur
+ */
 document.addEventListener("click", (e) => {
     if (e.target.id === "modaleContener") {
         fermerModale()
     }
 })
 
+/**
+ * Appel de l'api pour importer les travaux dans la modale
+ */
 function worksModale() {
     document.getElementById("images").innerHTML = "";
     fetch("http://localhost:5678/api/works")
         .then((response) => response.json())
         .then(data => {
             for (let i = 0; i < data.length; ++i) {
-                workModalFactory(data[i]);
+                workModalFactory(data[i],i);
             }
         })
 }
 
-let firstImage = true;
-function workModalFactory(work) {
+/**
+ * Crée dynamiquement les travaux de la modale
+ */
+function workModalFactory(work,index) {
     let images = document.getElementById("images")
 
     let imge = document.createElement("div")
@@ -187,9 +238,6 @@ function workModalFactory(work) {
     imgwork.setAttribute("src", work.imageUrl)
     imgwork.setAttribute("crossorigin", "anonymous")
 
-    let croix = document.createElement("i")
-    croix.setAttribute("class", "fa-solid fa-arrows-up-down-left-right arrow")
-
     let poubelle = document.createElement("i")
     poubelle.setAttribute("class", "fa-sharp fa-solid fa-trash-can poubelle")
     poubelle.setAttribute("onclick", "deleteOneWork(" + work.id + ")")
@@ -197,17 +245,22 @@ function workModalFactory(work) {
     let editer = document.createElement("figcaption")
     editer.append("éditer")
 
+    // Créer l'icone arrow que sur la première image
     imge.appendChild(imgwork)
-    imge.appendChild(croix)
+    if (index == 0) {
+        let croix = document.createElement("i")
+        croix.setAttribute("class", "fa-solid fa-arrows-up-down-left-right arrow")
+        imge.appendChild(croix)
+    }
     imge.appendChild(poubelle)
     imge.appendChild(editer)
     images.appendChild(imge)
 }
 
+/**
+ * Appel de l'api pour la suppression des travaux
+ */
 function deleteWorks() {
-    // fetch pour récup les works avec fetch
-    // pour chaque works de ta liste
-    // 
     fetch("http://localhost:5678/api/works")
         .then((response) => response.json())
         .then(data => {
@@ -218,6 +271,9 @@ function deleteWorks() {
         })
 }
 
+/**
+ * Supprimer un travaux par son id
+ */
 function deleteOneWork(id) {
     let url = "http://localhost:5678/api/works/" + id;
     fetch(url, {
@@ -246,8 +302,7 @@ function returnModal() {
 }
 
 /**
- * Fonction aj
- * @param {*} e 
+ * Appel de l'api pour ajouter des travaux
  */
 function addWorks(e) { 
     let image = document.getElementById("addPhotos").files[0];
@@ -271,6 +326,9 @@ function addWorks(e) {
         })
 }
 
+/**
+ * L'image qu'on selectionne s'affiche à la place du bouton
+ */
 function previewImage() {
     var preview = document.querySelector('#imagePreview');
     var file = document.querySelector('#addPhotos').files[0];
@@ -287,6 +345,9 @@ function previewImage() {
     }
   }
 
+/**
+ * cliquer sur l'image pour en selectionner une nouvelle
+ */
   function selectOther() {
     const imagePreview = document.getElementById("imagePreview");
     imagePreview.addEventListener('click', function() {
@@ -296,6 +357,9 @@ function previewImage() {
   }
 selectOther()
 
+/**
+ * 
+ */
 function categoriesModale() {
     fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
@@ -311,3 +375,8 @@ function categoriesModale() {
 
         })
 }
+
+// Acceder a la page d'accueil(reste le logo) *
+// Ne pas utiliser onclick sur html *
+// Enlever les filtres quand la page est connnecté *
+// js doc = /** */

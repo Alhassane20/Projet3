@@ -34,6 +34,10 @@ body {
 ol, ul {
 	list-style: none;
 }
+#logout
+{
+	display: none;
+}
 blockquote, q {
 	quotes: none;
 }
@@ -68,7 +72,8 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+	cursor:pointer
 }
 
 h1 > span {

@@ -25,13 +25,13 @@
 		<input type="submit" value="publier les changements">
 	</div>
 	<header>
-		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<h1 id="logo">Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li id="login" onclick="redirectLogin()">login</li>
-				<li onclick="logoutDirection()">logout</li>
+				<li id="login">login</li>
+				<li id="logout">logout</li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -61,7 +61,7 @@
 
 			<div id="modale1" aria-labelledby="dialog-title" aria-modal="true" aria-hidden="true">
 				<div role="document" id="dialogbox" class="c-dialog__box">
-					<button type="submit" class="closeModale" onclick="fermerModale()">X</button>
+					<button type="submit" class="closeModale">X</button>
 					<h3>Galerie photo</h3>
 					<div id="images">
 
