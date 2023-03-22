@@ -61,7 +61,7 @@
 
 			<div id="modale1" aria-labelledby="dialog-title" aria-modal="true" aria-hidden="true">
 				<div role="document" id="dialogbox" class="c-dialog__box">
-					<button type="submit" class="closeModale">X</button>
+					<button type="submit" class="closeModale" id="closeModale">X</button>
 					<h3>Galerie photo</h3>
 					<div id="images">
 
@@ -69,8 +69,8 @@
 					</div>
 					<div class="trait"></div>
 					<div id="btns">
-						<button type="submit" id="ajtphoto" onclick="changerModale()">Ajouter une photo</button>
-						<a id="suppgallerie" onclick="deleteWorks()">Supprimer la galerie</a>
+						<button type="submit" id="ajtphoto" >Ajouter une photo</button>
+						<a id="suppgallerie" >Supprimer la galerie</a>
 					</div>
 				</div>
 			</div>
@@ -79,9 +79,9 @@
 			aria-labelledby="dialog-title" aria-modal="true" aria-hidden="true">
 				<div role="document" id="dialogbox" class="c-dialog__box">
 					<div id="headerModal">
-						<button type="submit" id="return" onclick="returnModal()"><i
+						<button type="submit" id="return"><i
 								class="fa fa-arrow-left"></i></button>
-						<button type="submit" class="closeModale" onclick="fermerModale()">X</button>
+						<button type="submit" class="closeModale "">X</button>
 					</div>
 					<h3>Ajout photo</h3>
 
@@ -103,7 +103,7 @@
 
 					<div class="trait"></div>
 					<div id="valider">
-						<button type="submit" onclick="addWorks()">Valider</button>
+						<button type="submit" id="addWorks">Valider</button>
 					</div>
 				</div>
 			</div>
@@ -113,7 +113,7 @@
 		<section id="portfolio">
 			<div id="projet">
 				<h2>Mes Projets </h2>
-				<a id="modifierworks" onclick="ouvrirModale()"> <!--*** -->
+				<a id="modifierworks" > <!--*** -->
 					<i class="fa fa-pen-to-square"></i>
 					<p>Modifier</p>
 				</a>

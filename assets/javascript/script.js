@@ -1,4 +1,4 @@
-
+worksPage()
 function redirectLogin() {
     let login = document.getElementById("login")
     login.addEventListener("click",() => {
@@ -181,6 +181,9 @@ if (getToken() != null) {
     login.style.display ="none"
     let logout = document.getElementById("logout")
     logout.style.display = "block"
+
+    let filtres = document.getElementById("filtres")
+    filtres.style.display = "none"
     // Ajouter "token" dans une variable
     //  Si localStorage contient token
     //  Affiche les boutons
@@ -188,26 +191,30 @@ if (getToken() != null) {
 
 fermerModale()
 function fermerModale() {
-    let closeModale = document.getElementsByClassName("closeModale")
-    let modaleContener = document.querySelector(".modalContener")
+    let closeModale = document.getElementById("closeModale")
+    let modaleContener = document.getElementById("modaleContener")
     closeModale.addEventListener("click", () => {
         modaleContener.style.display = "none";
     })
 }
 
+ouvrirModale()
 function ouvrirModale() {
+    let openModale = document.getElementById("modifierworks")
     let modaleContener = document.querySelector(".modalContener")
+    openModale.addEventListener("click", () => {
     modaleContener.style.display = "block"
-
     worksModale();
+    })
 }
 
 /**
  * Fermer la modale en cliquant à l'exterieur
  */
 document.addEventListener("click", (e) => {
+    let modalContener = document.getElementById("modaleContener")
     if (e.target.id === "modaleContener") {
-        fermerModale()
+        modalContener.style.display = "none"
     }
 })
 
@@ -260,7 +267,8 @@ function workModalFactory(work,index) {
 /**
  * Appel de l'api pour la suppression des travaux
  */
-function deleteWorks() {
+let deleteWorks = document.getElementById("suppgallerie")
+deleteWorks.addEventListener("click",() => {
     fetch("http://localhost:5678/api/works")
         .then((response) => response.json())
         .then(data => {
@@ -269,7 +277,7 @@ function deleteWorks() {
                 deleteOneWork(id);
             }
         })
-}
+})
 
 /**
  * Supprimer un travaux par son id
@@ -287,24 +295,28 @@ function deleteOneWork(id) {
     })
 }
 
-function changerModale() {
+let changerModale = document.getElementById("ajtphoto")
+changerModale.addEventListener("click",() =>{
     let modale1 = document.getElementById("modale1")
     let modale2 = document.getElementById("modale2")
     modale1.style.display = "none"
     modale2.style.display = "block"
     categoriesModale()
-}
-function returnModal() {
+})
+
+let returnModal = document.getElementById("return")
+returnModal.addEventListener("click",() => {
     let modale1 = document.getElementById("modale1")
     let modale2 = document.getElementById("modale2")
     modale1.style.display = "block"
     modale2.style.display = "none"
-}
+})
 
 /**
  * Appel de l'api pour ajouter des travaux
  */
-function addWorks(e) { 
+    let addworks = document.getElementById("addWorks")
+    addWorks.addEventListener("click", (e) => {
     let image = document.getElementById("addPhotos").files[0];
     let titre = document.getElementById("titre").value;
     let categorie = document.getElementById("categorie").value;
@@ -324,7 +336,7 @@ function addWorks(e) {
             worksModale()
             majWorksPage()
         })
-}
+})
 
 /**
  * L'image qu'on selectionne s'affiche à la place du bouton
@@ -375,8 +387,3 @@ function categoriesModale() {
 
         })
 }
-
-// Acceder a la page d'accueil(reste le logo) *
-// Ne pas utiliser onclick sur html *
-// Enlever les filtres quand la page est connnecté *
-// js doc = /** */
