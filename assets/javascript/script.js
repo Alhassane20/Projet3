@@ -370,7 +370,7 @@ function previewImage() {
 selectOther()
 
 /**
- * 
+ * Crée les catégories des images à ajouter
  */
 function categoriesModale() {
     fetch("http://localhost:5678/api/categories")
